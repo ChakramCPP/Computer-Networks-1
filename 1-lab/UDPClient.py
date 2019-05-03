@@ -3,8 +3,8 @@ from socket import *
 serverName = 'localhost'
 serverPort = 2000
 clientSocket = socket(AF_INET, SOCK_DGRAM)
-message = raw_input('Input lowercase sentence: ')
+message = input('Input lowercase sentence: ').encode()
 clientSocket.sendto(message, (serverName, serverPort))
 modifiedMessage, serverAddress = clientSocket.recvfrom(2048)
-print modifiedMessage
+print(modifiedMessage.decode())
 clientSocket.close()
